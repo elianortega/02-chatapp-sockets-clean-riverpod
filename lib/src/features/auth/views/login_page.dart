@@ -1,8 +1,10 @@
-import 'package:chat_app/src/core/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_hooks/flutter_hooks.dart';
+
 import 'package:chat_app/src/core/styles/styles.dart';
+import 'package:chat_app/src/core/widgets/widgets.dart';
+
+import 'widgets/labels.dart';
 
 ///LogInPage
 class LogInPage extends StatelessWidget {
@@ -11,8 +13,16 @@ class LogInPage extends StatelessWidget {
 
   ///Router for LogInPage
   static Route route() {
-    return MaterialPageRoute<void>(builder: (_) => const LogInPage());
+    return MaterialPageRoute<void>(
+      builder: (_) => const LogInPage(),
+      settings: const RouteSettings(
+        name: routeName,
+      ),
+    );
   }
+
+  ///Login Pager route name
+  static const routeName = 'login-page';
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +36,14 @@ class LogInPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Logo(),
+                const Logo(
+                  title: 'ChatApp',
+                ),
                 _LoginForm(),
-                _Labels(),
-                _TermsAndConditions(),
+                const Labels(
+                  isLogIn: true,
+                ),
+                TermsAndConditions(),
               ],
             ),
           ),
@@ -71,35 +85,6 @@ class _LoginForm extends HookWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class _Labels extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const Text(
-          "Don't have an account?",
-          style: AppTextStyles.kBlack15W300,
-        ),
-        const SizedBox(height: 10.0),
-        const Text(
-          'Create an account now!',
-          style: AppTextStyles.kBlue18Bold,
-        )
-      ],
-    );
-  }
-}
-
-class _TermsAndConditions extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return const Text(
-      'Terms and conditions.',
-      style: AppTextStyles.kBlack14W200,
     );
   }
 }
