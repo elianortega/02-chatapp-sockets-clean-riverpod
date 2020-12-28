@@ -20,17 +20,18 @@ class LogInPage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: AppColors.kScaffoldBackground,
         body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Logo(),
-              const SizedBox(height: 60),
-              _LoginForm(),
-              const SizedBox(height: 40),
-              _Labels(),
-              const SizedBox(height: 40),
-              _TermsAndConditions(),
-            ],
+          physics: const BouncingScrollPhysics(),
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height * .95,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Logo(),
+                _LoginForm(),
+                _Labels(),
+                _TermsAndConditions(),
+              ],
+            ),
           ),
         ),
       ),
